@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <title>TicketBox | OTP Verification</title> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" /> 
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet"/> 
+    <style> 
+    div { 
+        position: absolute; 
+        top: 25%; 
+        left: 20%; 
+        font-size: 36px; 
+    } 
+    input { 
+        position: absolute; 
+        top: 45%; 
+        left: 33%; 
+        font-family: "Lato", sans-serif; 
+        font-size: 30px; 
+        box-shadow: 1px 1px 1px 1px rgb(175, 171, 171); 
+        width: 520px; 
+        height: 65px; 
+    } 
+    button { 
+        background: #1f1f28; 
+        border: none; 
+        color: #ffffff; 
+        padding: 25px 35px; 
+        text-align: center; 
+        border-radius: 9px; 
+        font-family: "Lato", sans-serif; 
+        text-decoration: none; 
+        display: inline-block; 
+        font-size: 27px; 
+        cursor: pointer; 
+        position: absolute; 
+        top: 70%; 
+        left: 43%; 
+        transition-duration: 0.4s; 
+    } 
+    button:hover {  
+        background:#515166; 
+    } 
+    </style> 
+</head> 
+<body style="font-family: 'Lato', sans-serif; background-color:#7a3b69f6"> 
+    <form method="POST" action="/otp"> 
+        <div class="box"> 
+            <big>Enter the 6-digit OTP code sent to your e-mail address:</big> 
+        </div> 
+        <input type="text" name="payment_otp" placeholder="Enter your OTP" /> 
+        <button type="submit">Verify OTP</button> 
+        <br> 
+    </form> 
+</body> 
+</html>

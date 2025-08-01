@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketBox | Movies</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('/static/images/clapperboard-5760216.jpg') no-repeat center center;
+            background-size: cover; 
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        .navbar {
+            margin-top: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+        }
+
+        .navbar h1 {
+            font-size: 2em;
+            color: rgb(210, 16, 16);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .navbar .center-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            margin-right: 230px;
+        }
+
+        
+
+        .movie-options {
+            display: flex;
+            justify-content: center;
+            padding-top: 60px; /* To make room for the navbar */
+            width: 100%;
+            max-width: 1300px;
+            flex-wrap: wrap;
+        }
+
+        .wrapper {
+            display: inline-block;
+            height: 250px;
+            width: 336px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .wrapper.selected {
+            border: 2px solid rgba(255, 255, 255, 0.686);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.685);
+        }
+
+        .wrapper label {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .movie-card img {
+            border: 2px solid black;
+            border-radius: 8px;
+            height: 150px;
+            width: 200px;
+        }
+
+        #movie-submit {
+            display: inline-block;
+            height: 50px;
+            width: 100px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-weight: 500;
+            margin-top: 50px;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Ticket <span style="color: white;">Box</span></h1>
+        <div class="center-text">Movies in {{ city }}</div>
+        <div class="user-name"></div>
+    </div>
+
+    <div class="movie-options">
+        <form action="/movies" method="POST" >
+            <input type="hidden" id="movie" name="movie" value="">
+
+            {% for movie in mov %}
+            <div class="wrapper" onclick="selectMovie('{{ movie }}')">
+                <label>{{ movie }}</label>
+                {% if movie == 'Raayan' %}
+                    <img src="/static/images/poster3.jpg" style="height: 200px;width: 300px;"  alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'Master' %}
+                    <img src="/static/images/poster1.jpg" style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'Soorarai Pottru' %}
+                    <img src="/static/images/poster2.jpg" style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'KGF' %}
+                    <img src="/static/images/poster4.jpg"  style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'KGF' %}
+                    <img src="/static/images/poster4.jpg"  style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'Premalu' %}
+                    <img src="/static/images/poster5.jpg"  style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'Aavesham' %}
+                    <img src="/static/images/poster6.jpg"  style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'Dangal' %}
+                    <img src="/static/images/poster7.jpg"  style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == '3 Idiots' %}
+                    <img src="/static/images/poster8.jpg"  style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'Ae Dil Hai Mushkil' %}
+                    <img src="/static/images/poster9.jpg"  style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'Gully Boy' %}
+                    <img src="/static/images/poster10.jpg"  style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'Chhichhore' %}
+                    <img src="/static/images/poster11.jpg"  style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% elif movie == 'Kabir Singh' %}
+                    <img src="/static/images/poster12.jpg"  style="height: 200px;width: 300px;" alt="{{ movie }}" class="movie-card">
+                {% else %}
+                    <p>Image not attached</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <center>
+            <button id="movie-submit" type="submit">Submit</button></center>
+        </form>
+    </div>
+
+    <script>
+        function selectMovie(movie) {
+            document.getElementById('movie').value = movie;
+            document.querySelectorAll('.wrapper').forEach(card => card.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+    </script>
+</body>
+</html>

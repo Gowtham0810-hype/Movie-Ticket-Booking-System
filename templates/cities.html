@@ -1,0 +1,145 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>TicketBox | City Selection</title> 
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            display: flex; 
+            background: url('/static/images/clapperboard-5760216.jpg') no-repeat center center;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .navbar {
+            margin-top: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+        }
+
+        .navbar h1 {
+            font-size: 2em;
+            color: rgb(210, 16, 16);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .navbar .center-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            margin-right: 80px;
+        }
+
+        .navbar .user-name {
+            margin-right: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .cityoptions {
+            display: flex;
+            justify-content: center;
+            padding-top: 60px; /* To make room for the navbar */
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .wrapper {
+            display: inline-block;
+            height: 250px;
+            width: 336px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .wrapper:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .wrapper.selected {
+            border: 2px solid rgb(213, 37, 37);
+            box-shadow: 0 0 10px rgb(213, 37, 37);
+        }
+
+        .wrapper label {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .city-card img {
+            border: 2px solid black;
+            border-radius: 8px;
+            height: 150px;
+            width: 200px;
+        }
+    </style>
+</head> 
+<body> 
+    <div class="navbar">
+        <h1>Ticket <span style="color: white;">Box</span></h1>
+        <div class="center-text">Select City</div>
+        <div class="user-name">User: {{ name }}</div>
+    </div>
+
+    <div class="cityoptions"> 
+        <form id="cityForm" action="/cities" method="POST"> 
+            <input type="hidden" id="city" name="city" value="">
+                
+            <div> 
+                {% for i in li %} 
+                <div class="wrapper" ondblclick="submitCity('{{ i }}')"> 
+                    <label>{{ i }}</label> 
+                    {% if i == 'Chennai' %} 
+                        <img src="/static/images/ch.jpg" style="height: 200px;width: 300px;" alt="Chennai" class="city-card"> 
+                    {% elif i == 'Mumbai' %} 
+                        <img src="/static/images/mum.jpg" style="height: 200px;width: 300px;" alt="Mumbai" class="city-card"> 
+                    {% elif i == 'Bangalore' %}  
+                        <img src="/static/images/bang.jpg" style="height: 200px;width: 300px;" alt="Bangalore" class="city-card"> 
+                    {% elif i == 'Delhi' %}  
+                        <img src="/static/images/del.cms" style="height: 200px;width: 300px;" alt="Delhi" class="city-card"> 
+                    {% else %} 
+                        <p>Image not attached</p> 
+                    {% endif %} 
+                </div>
+                {% endfor %} 
+            </div> 
+        </form> 
+    </div> 
+
+    <script>
+        function submitCity(city) {
+            document.getElementById('city').value = city;
+            document.getElementById('cityForm').submit();
+        }
+    </script>
+</body> 
+</html>

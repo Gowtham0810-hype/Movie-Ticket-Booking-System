@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketBox | Payment</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('/static/images/clapperboard-5760216.jpg') no-repeat center center;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+        }
+
+        .navbar h1 {
+            font-size: 2em;
+            color: rgb(210, 16, 16);
+            margin: 0;
+        }
+
+        .center-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            margin-right: 670px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60%;
+            margin-top: 20px;
+            max-width: 800px;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            position: relative;
+        }
+
+        .content img {
+            position: absolute;
+            opacity: 0.3;
+            z-index: -1;
+            top: 20px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 25px;
+            margin-bottom: 10px;
+            color: #f5f5f5;
+        }
+
+        .subtitle {
+            font-size: 25px;
+            color: #d1cfd0;
+            margin-bottom: 20px;
+        }
+
+        .amount-info {
+            font-size: 25px;
+            margin-bottom: 30px;
+            color: #f5f5f5;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            max-width: 350px;
+            height: 45px;
+            font-size: 20px;
+            padding: 5px 10px;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            background-color: #f5f5f5;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #d51010;
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: not-allowed;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+        }
+
+        button.enabled {
+            background-color: #ee8d81;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h1>Ticket <span style="color: white;">Box</span></h1>
+    
+</div>
+
+<div class="content">
+    <h1>Amount to be paid is &#8377;{{ amount }}</h1>
+    <form action="/payment" method="POST">
+        <div class="amount-info">
+            Choose a bank:
+            <select name="banks" id="banks">
+                <option value="State Bank of India">State Bank of India</option>
+                <option value="ICICI Bank">ICICI Bank</option>
+                <option value="HDFC Bank">HDFC Bank</option>
+                <option value="Bank of India">Bank of India</option>
+                <option value="Indian Overseas Bank">Indian Overseas Bank</option>
+            </select>
+        </div>
+
+        <div class="amount-info">
+            Choose card type:
+            <select name="cards" id="cards">
+                <option>MasterCard</option>
+                <option>VISA</option>
+                <option>RuPay</option>
+            </select>
+        </div>
+
+        <div class="amount-info">
+            Name on the card:
+            <input name="name_card" type="text" required placeholder="Name" />
+        </div>
+
+        <div class="amount-info">
+            Card number:
+            <input name="cardno" type="text" required placeholder="**** **** **** ****" />
+        </div>
+
+        <div class="amount-info">
+            Expiry date:
+            <input name="expdate" type="text" required placeholder="MM/YY" />
+            
+        </div>
+
+        <button class="enabled" type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    // Get the button and form elements
+    const submitBtn = document.querySelector('button');
+    const inputs = document.querySelectorAll('input, select');
+
+    // Function to toggle the button state
+    function toggleButton() {
+        let formValid = true;
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                formValid = false;
+            }
+        });
+        if (formValid) {
+            submitBtn.classList.add('enabled');
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.classList.remove('enabled');
+            submitBtn.disabled = true;
+        }
+    }
+
+    // Listen for input changes
+    inputs.forEach(input => {
+        input.addEventListener('input', toggleButton);
+    });
+
+    // Initial check for button state
+    toggleButton();
+</script>
+
+</body>
+</html>

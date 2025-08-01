@@ -1,0 +1,151 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>TicketBox | Time Selection</title> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style> 
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('/static/images/clapperboard-5760216.jpg') no-repeat center center;
+            background-size: cover; 
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+        }
+
+        .navbar h1 {
+            font-size: 2em;
+            color: rgb(210, 16, 16);
+            margin: 0;
+        }
+
+        .center-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            margin-right: 670px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60%;
+            max-width: 800px;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #f5f5f5;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #d1cfd0;
+            margin-bottom: 40px;
+        }
+
+        .date-container {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #f5f5f5;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            max-width: 350px;
+            height: 45px;
+            font-size: 1.2em;
+            padding: 5px 10px;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .timebtn {
+            background-color: #d4165a;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: 600;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .timebtn:hover {
+            background-color: #ff4f7b;
+        }
+
+        .alt-theatre-link {
+            font-size: 1em;
+            color: #f5f5f5;
+            margin-top: 30px;
+        }
+
+        .alt-theatre-link a {
+            color: #8ec5fc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .alt-theatre-link a:hover {
+            color: #ffdf85;
+        }
+    </style>
+</head> 
+<body>
+    <div class="navbar">
+        <h1>Ticket <span style="color: white;">Box</span></h1>
+        <div class="center-text">Time Selection</div>
+    </div>
+
+    <div class="content">
+        <h1>Timings for {{ movie }}</h1>
+        <div class="subtitle">Selected Theatre: {{ theatre }}</div>
+
+        <form action="/timings" method="POST">
+            <div class="date-container">Choose the Date:</div>
+            <input type="date" name="dateselected" required>
+
+            <button class="timebtn" type="submit">Submit</button>
+        </form>
+
+        <div class="alt-theatre-link">
+            Want to choose another theatre? 
+            <a href="http://127.0.0.1:5000/theatres">Click here to choose another theatre</a>
+        </div>
+    </div>
+</body>
+</html>

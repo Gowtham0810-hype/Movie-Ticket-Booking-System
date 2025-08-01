@@ -1,0 +1,185 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>TicketBox | Seat Choosing</title> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style> 
+        body{
+            
+            font-family: 'Lato', sans-serif; 
+            background-color: grey;
+            background: url('/static/images/seatsbg.jpg') no-repeat center center;
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+        }
+
+        .navbar h1 {
+            font-size: 2em;
+            color: rgb(210, 16, 16);
+            margin: 0;
+        }
+
+        .center-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            margin-right: 670px;
+        }
+        p.disabled{ 
+            background-color: red; 
+            text-align: center;  
+            float: left; width:  
+            22px; height: 22px;  
+            padding: 10px;  
+            margin-top: 5px;  
+            margin-left: 10px;  
+            border: 1px solid #000;  
+            border-radius: 9px;  
+            background:red 
+        } 
+        p input[type=checkbox]:checked{ 
+            background-color:rgba(99, 239, 99, 0.815) ; 
+            box-shadow: 8px 8px 22px 22px  rgb(22, 248, 22) ; 
+            overflow: hidden 
+        } 
+        p{ 
+            background-color:#c9c4c4; 
+            overflow: hidden; 
+            text-align: center;  
+            float: left;  
+            width: 22px;  
+            height: 22px;  
+            padding: 10px;  
+            margin-top: 5px;  
+            margin-left: 10px;  
+            border: 1px solid #000;  
+            border-radius: 9px;  
+            z-index: 1; 
+        } 
+        input{ 
+            position:absolute;  
+            width: 1px; 
+            height: 1px; 
+        } 
+        button{ 
+            background: #c55a5a; 
+            border: none; 
+            color: #ffffff; 
+            padding: 18px 25px; 
+            text-align: center; 
+            border-radius: 9px; 
+            font-family: "Lato", sans-serif; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-size: 24px; 
+            cursor: pointer; 
+            position: relative; 
+            top: -130px; 
+            left: 1080px; 
+            transition-duration: 0.4s; 
+        } 
+        button:hover{ 
+            background: #d51010; 
+        } 
+        h2{ 
+            position: relative; 
+            top: -50px; 
+            left: 30px; 
+            color:#fff 
+        } 
+    </style> 
+</head> 
+<body> 
+    <div class="navbar">
+        <h1>Ticket <span style="color: white;">Box</span></h1>
+        <div class="center-text">Seat Selection</div>
+    </div>
+    <br><br><br>
+    <form method="POST" action="/booked"> 
+    <div style="position: absolute; left: 120px; font-family: 'Lato', sans-serif;"> 
+        {% for y in range (1,25) %} 
+            {% set x = 'A'~ y|string %} 
+            {% if x in selected %} 
+            <label for="A{{ y }}"> 
+                <p class="disabled"> 
+                <input type="checkbox" id="seats_disabledA{{ y }}" value="A{{ y }}" name="seat_selected" style="opacity: 0" disabled/>A{{ y }} 
+                </p> 
+            </label> 
+            {% else %} 
+            <label class="enabled" for="A{{ y }}"> 
+                <p > 
+                <input type="checkbox" id="A{{ y }}" value="A{{ y }}" name="seat_selected" style="cursor: pointer" enabled/>A{{ y }} 
+                </p> 
+            </label> 
+            {% endif %} 
+        {% endfor %} 
+        <br> 
+        <br> 
+        <br> 
+    {% for i in ['B','C','D','E','F','G','H','I','J'] %} 
+        {% for j in range(1,21) %} 
+        {% set d = i ~ j|string %} 
+            {% if j in [1,2,3,4,6,7,8,9,10,11,12,13,14,16,17,18,19,20] %} 
+                {% if d in selected %} 
+                <label for="{{ i }}{{ j }}"> 
+                    <p class="disabled"> 
+                    <input type="checkbox" id="seats_disabled{{ i }}{{ j }}" value="{{ i }}{{ j }}" name="seat_selected" style="opacity: 0" disabled/> 
+                {{ i }}{{ j }} 
+                </p> 
+                </label> 
+                {% else %} 
+                <label class="enabled" for="{{ i }}{{ j }}"> 
+                    <p > 
+                    <input type="checkbox" id="{{ i }}{{ j }}" value="{{ i }}{{ j }}" name="seat_selected" style="cursor: pointer" enabled/> 
+                    {{ i }}{{ j }} 
+                    </p> 
+                </label> 
+                {% endif %} 
+            {% elif j in [5,15] %} 
+                {% if d in selected %} 
+                <label for="{{ i }}{{ j }}"> 
+                    <p class="disabled" style="margin-left: 118px; margin-right: 0px;"> 
+                    <input type="checkbox" id="seats_disabled{{ i }}{{ j }}" value="{{ i }}{{ j }}" name="seat_selected" style="opacity: 0" disabled/> 
+                    {{ i }}{{ j }} 
+                    </p> 
+                </label> 
+                {% else %} 
+                <label class="enabled" for="{{ i }}{{ j }}"> 
+                    <p  style="margin-left: 118px; margin-right: 0px;"> 
+                    <input type="checkbox" id="{{ i }}{{ j }}" value="{{ i }}{{ j }}" name="seat_selected" style="cursor: pointer" enabled/>{{ i }}{{ j }} 
+                    </p> 
+                </label> 
+                {% endif %} 
+            {% endif %} 
+        {% endfor %} 
+        <br> 
+        <br> 
+        <br> 
+    {% endfor %} 
+    <center style="font-size: 25px; left: 60px;color:#fff"><b>↓ This way to screen</b></center> 
+    <h2>Rows A-G :&#8377;180 
+        <br> 
+        Rows H-J :&#8377;120 
+    </h2> 
+    <button type="submit">Book now</button> 
+    </div> 
+    </form> 
+</body> 
+</html> 
