@@ -30,6 +30,47 @@ A dynamic web-based application for booking movie tickets across multiple cities
 | HTML/CSS         | Frontend UI                     |
 
 ---
+## 🎥 Website Screenshots
+
+Below are the screenshots of the Movie Ticket Booking System illustrating the full user journey:
+
+### 🔐 1. Login Page
+User enters their credentials to access the system.
+
+![Login Page](website-sss/loginpage.png)
+
+---
+### 🎬 2. CIty Selection Page
+Users can select a  city and available options.
+
+![Movie Selection](website-ss/cityselection.png)
+### 🎬 3. theatre Selection Page
+Users can select a theatre by city and available options.
+
+![Movie Selection](website-ss/theatreselection.png)
+
+---
+
+### 🏢 4. Movie Selection Page
+Users choose from 3 theatres showing the selected movie in their city, along with time slots.
+
+![Theatre Selection](website-ss/movieselection.png)
+
+---
+
+### 💺 5. Seat Selection Page
+Interactive seat layout where users select available seats.
+
+![Seat Selection](website-ss/seatselection.png)
+
+---
+
+### 📧 6. Confirmation Email
+A confirmation mail is sent with all booking details.
+
+![Email Confirmation](screenshots/confirmation.png)
+
+---
 
 ## 🏗️ Project Structure
 ```bash
