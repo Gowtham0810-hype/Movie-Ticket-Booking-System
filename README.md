@@ -37,38 +37,49 @@ Below are the screenshots of the Movie Ticket Booking System illustrating the fu
 ### 🔐 1. Login Page
 User enters their credentials to access the system.
 
-![Login Page](website-sss/loginpage.png)
+![Login Page](website-ss/Screenshot%202024-11-17%20001215.png)
 
 ---
-### 🎬 2. CIty Selection Page
+
+### 🎬 2. City Selection Page
 Users can select a  city and available options.
 
-![Movie Selection](website-ss/cityselection.png)
-### 🎬 3. theatre Selection Page
+![Movie Selection](website-ss/Screenshot%202024-11-17%20001330.png)
+
+---
+
+### 🎬 3. Movie Selection Page
+Users can select a movie present in the city.
+
+![Movie Selection](website-ss/Screenshot%202024-11-17%20001345.png)
+
+---
+
+### 🎬 4. theatre Selection Page
 Users can select a theatre by city and available options.
 
-![Movie Selection](website-ss/theatreselection.png)
+![Movie Selection](website-ss/Screenshot%202024-11-17%20001431.png)
 
 ---
 
-### 🏢 4. Movie Selection Page
-Users choose from 3 theatres showing the selected movie in their city, along with time slots.
+### 🏢 5. Movie Timing Page
+Users choose timing from available days form the database.
 
-![Theatre Selection](website-ss/movieselection.png)
+![Theatre Selection](website-ss/Screenshot%202024-11-17%20001443.png)
 
 ---
 
-### 💺 5. Seat Selection Page
+### 💺 6. Seat Selection Page
 Interactive seat layout where users select available seats.
 
-![Seat Selection](website-ss/seatselection.png)
+![Seat Selection](website-ss/Screenshot%202024-11-17%20001654.png)
 
 ---
 
-### 📧 6. Confirmation Email
+### 📧 7. Confirmation Email
 A confirmation mail is sent with all booking details.
 
-![Email Confirmation](screenshots/confirmation.png)
+![Email Confirmation](website-ss/Screenshot%202024-11-17%20001840.png)
 
 ---
 
